@@ -1,12 +1,13 @@
 ﻿using KoksyApp.API.Models;
 using KoksyApp.API.Repositories;
+using KoksyApp.Dtos.Models;
 
 namespace KoksyApp.API.Services;
 
 interface IWorkoutSessionService
 {
     public Task<bool> AddWorkoutSession(WorkoutSessionForCreation session);
-    public Task<WorkoutSession> GetLastSession(int id);
+    public Task<WorkoutSession> GetLastSession(Guid id);
 }
 public class WorkoutSessionService :IWorkoutSessionService
 {
@@ -25,7 +26,7 @@ public class WorkoutSessionService :IWorkoutSessionService
         return true;
     }
 
-    public Task<WorkoutSession> GetLastSession(int id)
+    public Task<WorkoutSession> GetLastSession(Guid id)
     {
         return _sessionRepository.GetLastSession(id);
     }

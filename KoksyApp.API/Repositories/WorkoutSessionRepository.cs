@@ -6,7 +6,7 @@ namespace KoksyApp.API.Repositories;
 public interface IWorkoutSessionRepository
 {
     public Task<bool> AddWorkoutSession(WorkoutSession session);
-    public Task<WorkoutSession> GetLastSession(int id);
+    public Task<WorkoutSession> GetLastSession(Guid id);
 
 }
 
@@ -26,7 +26,7 @@ public class WorkoutSessionRepository :BaseRepository<WorkoutSession>, IWorkoutS
         return collection.Find(x => x.CreatedAt == session.CreatedAt).AnyAsync();
     }
 
-    public Task<WorkoutSession> GetLastSession(int id)
+    public Task<WorkoutSession> GetLastSession(Guid id)
     {
         var sorting = Builders<WorkoutSession>.Sort.Descending("CreatedAt");
 

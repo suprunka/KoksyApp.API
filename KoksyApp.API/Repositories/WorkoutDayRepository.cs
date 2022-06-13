@@ -5,7 +5,9 @@ using MongoDB.Driver;
 namespace KoksyApp.API.Repositories;
 public interface IWorkoutDayRepository
 {
-    public Task<List<WorkoutDay>> GetWorkoutDays();
+    public WorkoutDay[] GetWorkoutDays();
+    Task<WorkoutDay> GetWorkoutDay(string id);
+    void Add(WorkoutDay forCreation);
 }
 
 public class WorkoutDayRepository :BaseRepository<WorkoutDay>, IWorkoutDayRepository
@@ -14,16 +16,26 @@ public class WorkoutDayRepository :BaseRepository<WorkoutDay>, IWorkoutDayReposi
     {
     }
 
-    public async Task<List<WorkoutDay>> GetWorkoutDays()
+    public WorkoutDay[] GetWorkoutDays()
     {
-        var dbList = db.ListCollections().ToList();
-
-        var collection = GetCollection();
-        var document = new WorkoutDay()
+        try
         {
-            Name = "dldjkd"
-        };
-        collection.InsertOne(document);
-        return new List<WorkoutDay>();
+            return GetCollection().AsQueryable().ToArray();
+        }
+        catch (Exception e)
+        {
+            return Array.Empty<WorkoutDay>();
+
+        }
+    }
+
+    public Task<WorkoutDay> GetWorkoutDay(string id)
+    {
+        return GetCollection().Find(c => c.Id == id).FirstOrDefaultAsync();
+    }
+
+    public void Add(WorkoutDay forCreation)
+    {
+        GetCollection().InsertOne(forCreation);
     }
 }

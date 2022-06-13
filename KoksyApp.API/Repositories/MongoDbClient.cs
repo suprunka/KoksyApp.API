@@ -19,15 +19,22 @@ public class MongoDbClient :IMongoDbClient
     }
     public  IMongoDatabase GetKoksyDatabase()
     {
-        
-        var settings = MongoClientSettings.FromConnectionString("mongodb+srv://pkarys:Bhv5S6iRoTtcxzKs@pkcluster.xs5uz.mongodb.net/KoksyApp?retryWrites=true&w=majority");
-        settings.ServerApi = new ServerApi(ServerApiVersion.V1);
-        var client = new MongoClient("mongodb+srv://pkarys:Bhv5S6iRoTtcxzKs@pkcluster.xs5uz.mongodb.net/KoksyApp?retryWrites=true&w=majority");
-        var database = client.GetDatabase("KoksyApp");
-
-        client.ListDatabaseNames();
-        var db = client.GetDatabase("KoksyApp");
-        return db;
+        try
+        {
+            var settings = MongoClientSettings.FromConnectionString(
+                _dbSettings.ConnectionString);
+            settings.UseTls = true;
+            settings.ServerApi = new ServerApi(ServerApiVersion.V1);
+            var client =
+                new MongoClient(settings);
+            var database = client.GetDatabase(_dbSettings.DatabaseName);
+            return database;
+        }
+        catch (Exception e)
+        {
+            return null;
+        }
+       
     }
 }
 

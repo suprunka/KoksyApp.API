@@ -1,0 +1,12 @@
+C:\Users\PatrycjaMariaSuprun\MyProjects\KoksyApp.API\KoksyApp.Dtos\bin\Debug\net6.0\KoksyApp.Dtos.deps.json
+C:\Users\PatrycjaMariaSuprun\MyProjects\KoksyApp.API\KoksyApp.Dtos\bin\Debug\net6.0\KoksyApp.Dtos.dll
+C:\Users\PatrycjaMariaSuprun\MyProjects\KoksyApp.API\KoksyApp.Dtos\bin\Debug\net6.0\KoksyApp.Dtos.pdb
+C:\Users\PatrycjaMariaSuprun\MyProjects\KoksyApp.API\KoksyApp.Dtos\obj\Debug\net6.0\KoksyApp.Dtos.csproj.AssemblyReference.cache
+C:\Users\PatrycjaMariaSuprun\MyProjects\KoksyApp.API\KoksyApp.Dtos\obj\Debug\net6.0\KoksyApp.Dtos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\PatrycjaMariaSuprun\MyProjects\KoksyApp.API\KoksyApp.Dtos\obj\Debug\net6.0\KoksyApp.Dtos.AssemblyInfoInputs.cache
+C:\Users\PatrycjaMariaSuprun\MyProjects\KoksyApp.API\KoksyApp.Dtos\obj\Debug\net6.0\KoksyApp.Dtos.AssemblyInfo.cs
+C:\Users\PatrycjaMariaSuprun\MyProjects\KoksyApp.API\KoksyApp.Dtos\obj\Debug\net6.0\KoksyApp.Dtos.csproj.CoreCompileInputs.cache
+C:\Users\PatrycjaMariaSuprun\MyProjects\KoksyApp.API\KoksyApp.Dtos\obj\Debug\net6.0\KoksyApp.Dtos.dll
+C:\Users\PatrycjaMariaSuprun\MyProjects\KoksyApp.API\KoksyApp.Dtos\obj\Debug\net6.0\refint\KoksyApp.Dtos.dll
+C:\Users\PatrycjaMariaSuprun\MyProjects\KoksyApp.API\KoksyApp.Dtos\obj\Debug\net6.0\KoksyApp.Dtos.pdb
+C:\Users\PatrycjaMariaSuprun\MyProjects\KoksyApp.API\KoksyApp.Dtos\obj\Debug\net6.0\ref\KoksyApp.Dtos.dll

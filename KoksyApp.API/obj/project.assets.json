@@ -292,6 +292,16 @@
             "rid": "win"
           }
         }
+      },
+      "KoksyApp.Dtos/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/KoksyApp.Dtos.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/KoksyApp.Dtos.dll": {}
+        }
       }
     }
   },
@@ -812,10 +822,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "KoksyApp.Dtos/1.0.0": {
+      "type": "project",
+      "path": "../KoksyApp.Dtos/KoksyApp.Dtos.csproj",
+      "msbuildProject": "../KoksyApp.Dtos/KoksyApp.Dtos.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "KoksyApp.Dtos >= 1.0.0",
       "MongoDB.Bson >= 2.15.1",
       "MongoDB.Driver >= 2.15.1",
       "Swashbuckle.AspNetCore >= 6.2.3"
@@ -862,7 +878,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\PatrycjaMariaSuprun\\MyProjects\\KoksyApp.API\\KoksyApp.Dtos\\KoksyApp.Dtos.csproj": {
+              "projectPath": "C:\\Users\\PatrycjaMariaSuprun\\MyProjects\\KoksyApp.API\\KoksyApp.Dtos\\KoksyApp.Dtos.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
