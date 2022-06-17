@@ -1,3 +1,4 @@
+using KoksyApp.API.Logging;
 using KoksyApp.API.Models;
 using KoksyApp.API.Repositories;
 using KoksyApp.API.Services;
@@ -22,6 +23,11 @@ builder.Services.AddScoped<IWorkoutRepository, WorkoutRepository>();
 builder.Services.AddScoped<IWorkoutSessionService, WorkoutSessionService>();
 builder.Services.AddScoped<IWorkoutDayService, WorkoutDayService>();
 builder.Services.AddScoped<IWorkoutService, WorkoutService>();
+builder.Services.Decorate<IWorkoutDayRepository, WorkoutDayRepositoryLogsDecorator>();
+builder.Services.Decorate<IWorkoutRepository,WorkoutRepositoryLogs>();
+builder.Services.Decorate<IWorkoutSessionRepository, WorkoutSessionRepositoryLogs>();
+
+builder.Logging.AddLog4Net();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
