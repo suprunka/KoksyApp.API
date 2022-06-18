@@ -20,7 +20,9 @@ public class WorkoutDayRepositoryLogsDecorator :IWorkoutDayRepository
         try
         {
             _logger.LogInformation("Getting data from database");
-            return _decorated.GetWorkoutDays();
+            var days = _decorated.GetWorkoutDays();
+            _logger.LogInformation($"Days:{days.Length}");
+            return days;
         }
         catch (Exception e)
         {
