@@ -13,9 +13,9 @@ public class MongoDbClient :IMongoDbClient
 {
     private readonly DatabaseSettings _dbSettings;
 
-    public MongoDbClient(IOptions<DatabaseSettings> configuration)
+    public MongoDbClient(DatabaseSettings configuration)
     {
-        _dbSettings = configuration.Value;
+        _dbSettings = configuration;
     }
     public  IMongoDatabase GetKoksyDatabase()
     {
