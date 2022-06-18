@@ -13,8 +13,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen();
-builder.Services.Configure<DatabaseSettings>(
-    builder.Configuration.GetSection("DatabaseSettings"));
+builder.Services.AddSingleton( 
+    new DatabaseSettings(Environment.GetEnvironmentVariable("DATABASE_URL"), Environment .GetEnvironmentVariable("DATABASE_NAME")));
 
 builder.Services.AddSingleton<IMongoDbClient, MongoDbClient>();
 builder.Services.AddScoped<IWorkoutSessionRepository, WorkoutSessionRepository>();
