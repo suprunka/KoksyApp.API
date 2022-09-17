@@ -21,6 +21,7 @@ public class WorkoutRepository :BaseRepository<Workout>, IWorkoutRepository
 
     public Workout[] GetWorkoutsForDay(string dayId)
     {
+        var col = GetCollection().Find(X=> X.Id != null).ToEnumerable().ToArray();
         return GetCollection().Find(_ => _.WorkoutDayId == dayId).ToEnumerable().ToArray();
     }
 

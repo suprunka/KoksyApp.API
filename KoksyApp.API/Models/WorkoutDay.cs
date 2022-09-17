@@ -30,19 +30,20 @@ public class Workout
         Name = name;
         Uri = uri;
     }
-    [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]
-    public string WorkoutDayId { get; set; }
-    [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
     public string Id { get; set; }
+    
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string WorkoutDayId { get; set; }
+    
     public int MinReps { get; set; }
     public int MaxReps { get; set; }    
     public int SessionsCount { get; set; }    
     public string Name { get; set; }
     public string Uri { get; }
     public string Url { get; set; }
-    public WorkoutSession LastSession { get; set; }
+    
+    //public WorkoutSession LastSession { get; set; }
 
 }
 public class WorkoutSession
