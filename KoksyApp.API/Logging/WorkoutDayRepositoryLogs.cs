@@ -6,27 +6,27 @@ namespace KoksyApp.API.Logging;
 
 public class WorkoutDayRepositoryLogsDecorator :IWorkoutDayRepository
 {
-    private readonly IWorkoutDayRepository _decorated;
-    private readonly ILogger _logger;
+    private readonly IWorkoutDayRepository decorated;
+    private readonly ILogger logger;
 
     public WorkoutDayRepositoryLogsDecorator(IWorkoutDayRepository decorated, ILogger<WorkoutDayRepository> logger)
     {
-        this._decorated = decorated;
-        _logger = logger;
+        this.decorated = decorated;
+        this.logger = logger;
     }
 
     public WorkoutDay[] GetWorkoutDays()
     {
         try
         {
-            _logger.LogInformation("Getting data from database");
-            var days = _decorated.GetWorkoutDays();
-            _logger.LogInformation($"Days:{days.Length}");
+            logger.LogInformation("Getting data from database");
+            var days = decorated.GetWorkoutDays();
+            logger.LogInformation($"Days:{days.Length}");
             return days;
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "Exception in getting data from database");
+            logger.LogError(e, "Exception in getting data from database");
             return Array.Empty<WorkoutDay>();
         }
         
@@ -36,12 +36,12 @@ public class WorkoutDayRepositoryLogsDecorator :IWorkoutDayRepository
     {
         try                                                                                 
         {                                                                                   
-            _logger.LogInformation("Getting data from database");                           
-            return _decorated.GetWorkoutDay(id);                                             
+            logger.LogInformation("Getting data from database");                           
+            return decorated.GetWorkoutDay(id);                                             
         }                                                                                   
         catch (Exception e)                                                                 
         {                                                                                   
-            _logger.LogError(e, "Exception in getting data from database");
+            logger.LogError(e, "Exception in getting data from database");
             return null!;
         }
     }
@@ -50,12 +50,12 @@ public class WorkoutDayRepositoryLogsDecorator :IWorkoutDayRepository
     {
         try                                                                                 
         {                                                                                   
-            _logger.LogInformation("Posting to database", forCreation); 
-            _decorated.Add(forCreation);                                             
+            logger.LogInformation("Posting to database", forCreation); 
+            decorated.Add(forCreation);                                             
         }                                                                                   
         catch (Exception e)                                                                 
         {                                                                                   
-            _logger.LogError(e, "Exception in adding data from database");                 
+            logger.LogError(e, "Exception in adding data from database");                 
         }                                                                               
    }
 }

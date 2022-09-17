@@ -6,17 +6,17 @@ namespace KoksyApp.API.Repositories;
 public interface IWorkoutSessionRepository
 {
     public Task<bool> AddWorkoutSession(WorkoutSession session);
-    public Task<WorkoutSession> GetLastSession(Guid id);
+    public Task<WorkoutSession> GetLastSession(string id, string userId);
 
 }
 
 public class WorkoutSessionRepository :BaseRepository<WorkoutSession>, IWorkoutSessionRepository
 {
-    private readonly IMongoDbClient _mongoDbClient;
+    private readonly IMongoDbClient mongoDbClient;
 
     public WorkoutSessionRepository(IMongoDbClient mongoDbClient) : base(mongoDbClient)
     {
-        _mongoDbClient = mongoDbClient;
+        this.mongoDbClient = mongoDbClient;
     }
 
     public Task<bool> AddWorkoutSession(WorkoutSession session)
@@ -26,12 +26,12 @@ public class WorkoutSessionRepository :BaseRepository<WorkoutSession>, IWorkoutS
         return collection.Find(x => x.CreatedAt == session.CreatedAt).AnyAsync();
     }
 
-    public Task<WorkoutSession> GetLastSession(Guid id)
+    public Task<WorkoutSession> GetLastSession(string id, string userId)
     {
         var sorting = Builders<WorkoutSession>.Sort.Descending("CreatedAt");
 
         return  GetCollection()
-            .Find(_ => true)
+            .Find(_ => _.Id == id)
             .Sort(sorting)
             .FirstOrDefaultAsync();
     }

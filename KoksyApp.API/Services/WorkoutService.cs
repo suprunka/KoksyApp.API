@@ -14,30 +14,30 @@ public interface IWorkoutService
 
 public class WorkoutService :IWorkoutService
 {
-    private readonly IWorkoutRepository _workoutRepository;
-    private readonly IWorkoutDayService _workoutDayService;
+    private readonly IWorkoutRepository workoutRepository;
+    private readonly IWorkoutDayService workoutDayService;
 
     public WorkoutService(IWorkoutRepository workoutRepository, IWorkoutDayService workoutDayService)
     {
-        _workoutRepository = workoutRepository;
-        _workoutDayService = workoutDayService;
+        this.workoutRepository = workoutRepository;
+        this.workoutDayService = workoutDayService;
     }
 
     public  Workout[] GetWorkoutsForDay(string dayId)
     {
-        return _workoutRepository.GetWorkoutsForDay(dayId);
+        return workoutRepository.GetWorkoutsForDay(dayId);
     }
 
     public async Task<bool> AddWorkout(WorkoutForCreation forCreation)
     {
         var workout = new Workout(forCreation.WorkoutDayId, forCreation.MinReps, forCreation.MaxReps, forCreation.SessionsCount,
             forCreation.Name, forCreation.Url.AbsoluteUri);
-        var workoutDay = await  _workoutDayService.GetWorkoutDay(forCreation.WorkoutDayId);
+        var workoutDay = await  workoutDayService.GetWorkoutDay(forCreation.WorkoutDayId);
         if (workoutDay.Id != null)
         {
             workout.WorkoutDayId = workoutDay.Id;
         }
-        await _workoutRepository.AddWorkout(workout);
+        await workoutRepository.AddWorkout(workout);
         return true;
     }
 }

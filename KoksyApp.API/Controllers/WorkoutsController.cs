@@ -7,23 +7,23 @@ namespace KoksyApp.API.Controllers;
 
 public class WorkoutsController :BaseController
 {
-    private readonly IWorkoutService _workoutService;
+    private readonly IWorkoutService workoutService;
 
     public WorkoutsController(IWorkoutService workoutService)
     {
-        _workoutService = workoutService;
+        this.workoutService = workoutService;
     }
     [HttpGet(Name = "GetWorkout")]
     public Workout[] Get(string dayId)
     {
-       var workouts = _workoutService.GetWorkoutsForDay(dayId);
+       var workouts = workoutService.GetWorkoutsForDay(dayId);
        return workouts;
     }
 
     [HttpPost(Name = "Add")]
     public async Task<bool> Add(WorkoutForCreation forCreation)
     {
-        var added = await _workoutService.AddWorkout(forCreation);
+        var added = await workoutService.AddWorkout(forCreation);
         return added;
     }
 }

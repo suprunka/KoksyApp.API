@@ -52,11 +52,54 @@ public class WorkoutSession
         Reps = creation.Reps;
         Weight = creation.Weight;
         CreatedAt = DateTime.UtcNow;
+        WorkoutId = creation.WorkoutId;
     }
     public int Reps { get; set; }
     public double Weight { get; set; }
     public DateTime CreatedAt { get; set; }
+    
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string Id { get; set; }    
+    
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string WorkoutId { get; set; }
+    
+}
+
+
+
+public class User
+{
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
     public string Id { get; set; }
+    
+    [BsonElement("Email")]
+    public string Email { get; set; }
+    
+    [BsonElement("Password")]
+    public string Password { get; set; }
+    
+}
+
+public class UserWorkoutSession
+{
+    public UserWorkoutSession(string sessionId, string userId)
+    {
+        SessionId = sessionId;
+        UserId = userId;
+    }
+
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string SessionId { get; set; }
+    
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string UserId { get; set; }
+    
+    public DateTime CreatedAt { get; set; }
+
 }

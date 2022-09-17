@@ -5,25 +5,25 @@ namespace KoksyApp.API.Logging;
 
 public class WorkoutRepositoryLogs :IWorkoutRepository
 {
-    private readonly ILogger<WorkoutRepository> _logger;
-    private readonly IWorkoutRepository _decorated;
+    private readonly ILogger<WorkoutRepository> logger;
+    private readonly IWorkoutRepository decorated;
 
     public WorkoutRepositoryLogs(ILogger<WorkoutRepository> logger, IWorkoutRepository decorated)
     {
-        _logger = logger;
-        _decorated = decorated;
+        this.logger = logger;
+        this.decorated = decorated;
     }
 
     public Workout[] GetWorkoutsForDay(string dayId)
     {
         try                                                                                 
         {                                                                                   
-            _logger.LogInformation($"Getting data from database for day= {dayId}"); 
-            return _decorated.GetWorkoutsForDay(dayId);                                             
+            logger.LogInformation($"Getting data from database for day= {dayId}"); 
+            return decorated.GetWorkoutsForDay(dayId);                                             
         }                                                                                   
         catch (Exception e)                                                                 
         {                                                                                   
-            _logger.LogError(e, "Exception in adding data from database");
+            logger.LogError(e, "Exception in adding data from database");
             return Array.Empty<Workout>();
         }           
     }
@@ -32,12 +32,12 @@ public class WorkoutRepositoryLogs :IWorkoutRepository
     {
         try                                                                                 
         {                                                                                   
-            _logger.LogInformation("Posting to database", workout); 
-            await _decorated.AddWorkout(workout);                                             
+            logger.LogInformation("Posting to database", workout); 
+            await decorated.AddWorkout(workout);                                             
         }                                                                                   
         catch (Exception e)                                                                 
         {                                                                                   
-            _logger.LogError(e, "Exception in adding data from database");                 
+            logger.LogError(e, "Exception in adding data from database");                 
         }   
     }
 }

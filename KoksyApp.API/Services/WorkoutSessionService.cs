@@ -7,28 +7,28 @@ namespace KoksyApp.API.Services;
 interface IWorkoutSessionService
 {
     public Task<bool> AddWorkoutSession(WorkoutSessionForCreation session);
-    public Task<WorkoutSession> GetLastSession(Guid id);
+    public Task<WorkoutSession> GetLastSession(string id, string userId);
 }
 public class WorkoutSessionService :IWorkoutSessionService
 {
-    private readonly IWorkoutSessionRepository _sessionRepository;
+    private readonly IWorkoutSessionRepository sessionRepository;
 
     public WorkoutSessionService(IWorkoutSessionRepository sessionRepository)
     {
-        _sessionRepository = sessionRepository;
+        this.sessionRepository = sessionRepository;
     }
 
     public async Task<bool> AddWorkoutSession(WorkoutSessionForCreation forCreation)
     {
         var session = new WorkoutSession(forCreation);
-        await  _sessionRepository.AddWorkoutSession(session);
+        await  sessionRepository.AddWorkoutSession(session);
         //TODO: return in adding
         return true;
     }
 
-    public Task<WorkoutSession> GetLastSession(Guid id)
+    public Task<WorkoutSession> GetLastSession(string id, string userId)
     {
-        return _sessionRepository.GetLastSession(id);
+        return sessionRepository.GetLastSession(id, userId);
     }
 }
 //haslo Bhv5S6iRoTtcxzKs

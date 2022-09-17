@@ -7,21 +7,24 @@ namespace KoksyApp.API.Controllers;
 
 public class WorkoutSessionsController : BaseController
 {
-    private readonly WorkoutSessionService _workoutSessionService;
+    private readonly WorkoutSessionService workoutSessionService;
     
     public WorkoutSessionsController(WorkoutSessionService workoutSessionService)
     {
-        _workoutSessionService = workoutSessionService;
+        this.workoutSessionService = workoutSessionService;
     }
 
-    [HttpGet(Name = "GetWorkoutSession")]
-    public Task<WorkoutSession> Get(Guid id)
+    [HttpGet]
+    [Route("api/users/{userId}/Workout/{id}/Sessions")]
+
+    public Task<WorkoutSession> Get(string id, string userId)
     {
-        return _workoutSessionService.GetLastSession(id);
+        return workoutSessionService.GetLastSession(id,userId);
     }
     [HttpPost(Name = "AddWorkoutSession")]
+
     public Task<bool> Add(WorkoutSessionForCreation session)
     {
-        return _workoutSessionService.AddWorkoutSession(session);
+        return workoutSessionService.AddWorkoutSession(session);
     }
 }

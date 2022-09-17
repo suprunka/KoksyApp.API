@@ -1,4 +1,6 @@
-﻿namespace KoksyApp.Dtos.Models;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace KoksyApp.Dtos.Models;
 
 public class WorkoutForCreation
 {
@@ -23,4 +25,12 @@ public class WorkoutDayDto
 }
 public class WorkoutDto
 { 
+}
+
+public class UserForCreation
+{
+    [EmailAddress]
+    public string Email { get; set; }  
+    [MinLength(8)]
+    public string Password { get; set; }  
 }

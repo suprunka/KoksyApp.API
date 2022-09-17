@@ -14,27 +14,27 @@ public interface IWorkoutDayService
 
 public class WorkoutDayService:IWorkoutDayService
 {
-    private readonly IWorkoutDayRepository _workoutDayRepository;
+    private readonly IWorkoutDayRepository workoutDayRepository;
 
     public WorkoutDayService(IWorkoutDayRepository workoutDayRepository)
     {
-        _workoutDayRepository = workoutDayRepository;
+        this.workoutDayRepository = workoutDayRepository;
     }
 
     public bool AddWorkoutDay(WorkoutDayForCreation forCreation)
     {
         var workoutDay = new WorkoutDay(forCreation.Name);
-        _workoutDayRepository.Add(workoutDay);
+        workoutDayRepository.Add(workoutDay);
         return true;
     }
 
     public WorkoutDay[] GetWorkoutDays()
     {
-        return _workoutDayRepository.GetWorkoutDays();
+        return workoutDayRepository.GetWorkoutDays();
     }
 
     public Task<WorkoutDay> GetWorkoutDay(string id)
     {
-        return _workoutDayRepository.GetWorkoutDay(id);
+        return workoutDayRepository.GetWorkoutDay(id);
     }
 }

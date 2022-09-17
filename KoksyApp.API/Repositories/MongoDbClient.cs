@@ -1,6 +1,4 @@
-﻿using KoksyApp.API.Models;
-using KoksyApp.API.Settings;
-using Microsoft.Extensions.Options;
+﻿using KoksyApp.API.Settings;
 using MongoDB.Driver;
 
 namespace KoksyApp.API.Repositories;
@@ -11,49 +9,28 @@ public interface IMongoDbClient
 }
 public class MongoDbClient :IMongoDbClient
 {
-    private readonly DatabaseSettings _dbSettings;
+    private readonly DatabaseSettings dbSettings;
 
     public MongoDbClient(DatabaseSettings configuration)
     {
-        _dbSettings = configuration;
+        dbSettings = configuration;
     }
     public  IMongoDatabase GetKoksyDatabase()
     {
         try
         {
             var settings = MongoClientSettings.FromConnectionString(
-                _dbSettings.ConnectionString);
+                dbSettings.ConnectionString);
             settings.UseTls = true;
             settings.ServerApi = new ServerApi(ServerApiVersion.V1);
             var client =
                 new MongoClient(settings);
-            var database = client.GetDatabase(_dbSettings.DatabaseName);
+            var database = client.GetDatabase(dbSettings.DatabaseName);
             return database;
         }
         catch (Exception e)
         {
             return null;
         }
-       
     }
-}
-
-public class BaseRepository<T>
-{
-    private readonly IMongoDbClient _mongoDbClient;
-    protected  IMongoDatabase db;
-
-    protected BaseRepository(IMongoDbClient mongoDbClient)
-    {
-        _mongoDbClient = mongoDbClient; 
-        db = _mongoDbClient.GetKoksyDatabase();
-
-    }
-
-    protected IMongoCollection<T> GetCollection()
-    {
-        
-        return db.GetCollection<T>("WorkoutDay");
-    }
-    
 }
