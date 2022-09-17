@@ -7,6 +7,7 @@ namespace KoksyApp.API.Repositories;
 public interface IWorkoutRepository
 {
     public Workout[] GetWorkoutsForDay(string dayId);
+    public Task<Workout> GetWorkout(string id);
     public Task AddWorkout(Workout workout);
 
 }
@@ -21,6 +22,11 @@ public class WorkoutRepository :BaseRepository<Workout>, IWorkoutRepository
     public Workout[] GetWorkoutsForDay(string dayId)
     {
         return GetCollection().Find(_ => _.WorkoutDayId == dayId).ToEnumerable().ToArray();
+    }
+
+    public Task<Workout> GetWorkout(string id)
+    {
+        return GetCollection().Find(_ => _.Id == id).FirstOrDefaultAsync();
     }
 
     public async Task AddWorkout(Workout workout)

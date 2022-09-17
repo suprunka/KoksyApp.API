@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KoksyApp.API.Controllers;
 
-public class WorkoutsController :BaseController
+public class WorkoutsController : BaseController
 {
     private readonly IWorkoutService workoutService;
 
@@ -13,11 +13,19 @@ public class WorkoutsController :BaseController
     {
         this.workoutService = workoutService;
     }
-    [HttpGet(Name = "GetWorkout")]
-    public Workout[] Get(string dayId)
+
+    [HttpGet(Name = "GetWorkoutsForDay")]
+    public Workout[] Get(string dayId, string exerciseId)
     {
-       var workouts = workoutService.GetWorkoutsForDay(dayId);
-       return workouts;
+        var workouts = workoutService.GetWorkoutsForDay(dayId);
+        return workouts;
+    }
+
+    [HttpGet(Name = "GetWorkout")]
+    public async Task<Workout> Get(string exerciseId)
+    {
+        var workout = await workoutService.GetWorkout(exerciseId);
+        return workout;
     }
 
     [HttpPost(Name = "Add")]

@@ -7,7 +7,8 @@ namespace KoksyApp.API.Services;
 
 public interface IWorkoutService
 {
-   Workout[] GetWorkoutsForDay(string dayId);
+    Workout[] GetWorkoutsForDay(string dayId);
+    Task<Workout> GetWorkout(string id);
 
    Task<bool> AddWorkout(WorkoutForCreation forCreation);
 }
@@ -26,6 +27,11 @@ public class WorkoutService :IWorkoutService
     public  Workout[] GetWorkoutsForDay(string dayId)
     {
         return workoutRepository.GetWorkoutsForDay(dayId);
+    }
+
+    public Task<Workout> GetWorkout(string id)
+    {
+        return workoutRepository.GetWorkout(id);
     }
 
     public async Task<bool> AddWorkout(WorkoutForCreation forCreation)
