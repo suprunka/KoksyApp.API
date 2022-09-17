@@ -14,16 +14,14 @@ public class WorkoutsController : BaseController
         this.workoutService = workoutService;
     }
 
-    [HttpGet(Name = "GetWorkoutsForDay")]
+    [HttpGet("api/workoutdays/{dayId}/workouts")]
     public Workout[] GetWorkoutsForDay(string dayId)
     {
         var workouts = workoutService.GetWorkoutsForDay(dayId);
         return workouts;
     }
 
-    [HttpGet(Name = "GetWorkout")]
-    [Route("api/workouts/{exerciseId}")]
-
+    [HttpGet("api/workouts/{exerciseId}")]
     public async Task<Workout> GetWorkout(string exerciseId)
     {
         var workout = await workoutService.GetWorkout(exerciseId);
