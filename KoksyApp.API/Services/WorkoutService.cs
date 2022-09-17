@@ -37,7 +37,7 @@ public class WorkoutService :IWorkoutService
     public async Task<bool> AddWorkout(WorkoutForCreation forCreation)
     {
         var workout = new Workout(forCreation.WorkoutDayId, forCreation.MinReps, forCreation.MaxReps, forCreation.SessionsCount,
-            forCreation.Name, forCreation.Url.AbsoluteUri);
+            forCreation.Name, forCreation.Url.AbsoluteUri, forCreation.BreakSeconds);
         var workoutDay = await  workoutDayService.GetWorkoutDay(forCreation.WorkoutDayId);
         if (workoutDay.Id != null)
         {

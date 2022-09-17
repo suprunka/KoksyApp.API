@@ -10,6 +10,7 @@ public class WorkoutForCreation
     public int SessionsCount { get; set; }    
     public string Name { get; set; }
     public Uri Url { get; set; }
+    public int BreakSeconds { get; set; }
 }
 
 public class WorkoutDayForCreation

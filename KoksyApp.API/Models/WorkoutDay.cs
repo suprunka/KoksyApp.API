@@ -21,18 +21,20 @@ public class WorkoutDay
 }
 public class Workout
 {
-    public Workout(string workoutDayId, int minReps, int maxReps, int sessionsCount, string name, string uri)
+    public Workout(string workoutDayId, int minReps, int maxReps, int sessionsCount, string name, string url, int breakSeconds)
     {
         WorkoutDayId = workoutDayId;
         MinReps = minReps;
         MaxReps = maxReps;
         SessionsCount = sessionsCount;
         Name = name;
-        Uri = uri;
+        Url = url;
+        BreakSeconds = breakSeconds;
     }
+    [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
     public string Id { get; set; }
-    
+  
     [BsonRepresentation(BsonType.ObjectId)]
     public string WorkoutDayId { get; set; }
     
@@ -40,11 +42,24 @@ public class Workout
     public int MaxReps { get; set; }    
     public int SessionsCount { get; set; }    
     public string Name { get; set; }
-    public string Uri { get; }
     public string Url { get; set; }
+    public int BreakSeconds { get; set; }
     
     //public WorkoutSession LastSession { get; set; }
 
+    public BsonDocument ToBsonDocument()
+    {
+        return new BsonDocument()
+        {
+            {"WorkoutDayId", WorkoutDayId},
+            {"MinReps", MinReps},
+            {"MaxReps", MaxReps},
+            {"SessionsCount", SessionsCount},
+            {"Name", Name},
+            {"Url", Url},
+            {"BreakSeconds", BreakSeconds},
+        };
+    }
 }
 public class WorkoutSession
 {
@@ -63,7 +78,6 @@ public class WorkoutSession
     [BsonRepresentation(BsonType.ObjectId)]
     public string Id { get; set; }    
     
-    [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
     public string WorkoutId { get; set; }
     

@@ -34,6 +34,7 @@ public class WorkoutRepository :BaseRepository<Workout>, IWorkoutRepository
     {
         var workoutsCollection = GetCollection();
         await workoutsCollection.InsertOneAsync(workout);
+       
         //TODO:DECORATOR PATTERN
     }
 }

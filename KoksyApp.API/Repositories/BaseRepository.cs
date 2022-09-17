@@ -5,7 +5,7 @@ namespace KoksyApp.API.Repositories;
 public class BaseRepository<T>
 {
     private readonly IMongoDbClient mongoDbClient;
-    private readonly IMongoDatabase db;
+    public readonly IMongoDatabase db;
 
     protected BaseRepository(IMongoDbClient mongoDbClient)
     {
