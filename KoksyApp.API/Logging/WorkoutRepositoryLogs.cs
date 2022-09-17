@@ -28,6 +28,20 @@ public class WorkoutRepositoryLogs :IWorkoutRepository
         }           
     }
 
+    public Task<Workout> GetWorkout(string id)
+    {
+        try                                                                                 
+        {                                                                                   
+            logger.LogInformation($"Getting data from database for id= {id}"); 
+            return decorated.GetWorkout(id);                                             
+        }                                                                                   
+        catch (Exception e)                                                                 
+        {                                                                                   
+            logger.LogError(e, "Exception in adding data from database");
+            return null;
+        }    
+    }
+
     public async Task AddWorkout(Workout workout)
     {
         try                                                                                 
