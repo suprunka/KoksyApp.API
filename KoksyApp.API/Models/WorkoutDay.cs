@@ -63,13 +63,18 @@ public class Workout
 }
 public class WorkoutSession
 {
-    public WorkoutSession(WorkoutSessionForCreation creation)
+    public WorkoutSession(int reps, int setNumber, double weight, string workoutId, string userId)
     {
-        Reps = creation.Reps;
-        Weight = creation.Weight;
+        Reps =reps;
+        Weight = weight;
         CreatedAt = DateTime.UtcNow;
-        WorkoutId = creation.WorkoutId;
+        WorkoutId = workoutId;
+        SetNumber =setNumber;
+        UserId = userId;
     }
+
+    public int SetNumber { get; set; }
+
     public int Reps { get; set; }
     public double Weight { get; set; }
     public DateTime CreatedAt { get; set; }
@@ -80,6 +85,8 @@ public class WorkoutSession
     
     [BsonRepresentation(BsonType.ObjectId)]
     public string WorkoutId { get; set; }
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string UserId { get; set; }
     
 }
 

@@ -18,7 +18,8 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "DATABASE_URL": "mongodb+srv://koksyapi:Bhv5S6iRoTtcxzKs@koksyapp.i1d94.mongodb.net/?retryWrites=true&w=majority",
-        "DATABASE_NAME": "KoksyApp"
+        "DATABASE_NAME": "KoksyApp",
+        "JWT":"KEY0987654rtyghgtr5456789"
       }
     },
     "IIS Express": {

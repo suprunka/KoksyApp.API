@@ -4,9 +4,9 @@ using KoksyApp.Dtos.Models;
 
 namespace KoksyApp.API.Services;
 
-interface IWorkoutSessionService
+public interface IWorkoutSessionService
 {
-    public Task<bool> AddWorkoutSession(WorkoutSessionForCreation session);
+    public Task<bool> AddWorkoutSession(WorkoutSessionForCreation session, string userId);
     public Task<WorkoutSession> GetLastSession(string id, string userId);
 }
 public class WorkoutSessionService :IWorkoutSessionService
@@ -18,9 +18,9 @@ public class WorkoutSessionService :IWorkoutSessionService
         this.sessionRepository = sessionRepository;
     }
 
-    public async Task<bool> AddWorkoutSession(WorkoutSessionForCreation forCreation)
+    public async Task<bool> AddWorkoutSession(WorkoutSessionForCreation forCreation, string userId)
     {
-        var session = new WorkoutSession(forCreation);
+        var session = new WorkoutSession(forCreation.Reps, forCreation.SetNumber, forCreation.Weight, forCreation.WorkoutId, userId);
         await  sessionRepository.AddWorkoutSession(session);
         //TODO: return in adding
         return true;

@@ -13,6 +13,8 @@ public interface IUserAuthService
 {
     public string Authenticate(string email, string password);
     public Task<bool> Register(string email, string password);
+
+    public string GetTokenUser(string token);
 }
 public class UserAuthService:IUserAuthService
 {
@@ -30,15 +32,15 @@ public class UserAuthService:IUserAuthService
             throw new NotFoundException();
 
         var tokenHandler = new JwtSecurityTokenHandler();
-        var tokenKey = Encoding.ASCII.GetBytes("KEY0987654rtyghgtr5456789");
+        var tokenKey = Encoding.ASCII.GetBytes(Environment.GetEnvironmentVariable("JWT"));
         var tokenDescriptor = new SecurityTokenDescriptor()
         {
-            Subject = new ClaimsIdentity(new Claim[] {new Claim(ClaimTypes.Email, email)}),
+            Subject = new ClaimsIdentity(new Claim[] {new Claim(ClaimTypes.Email, email), new Claim(ClaimTypes.NameIdentifier, user.Id)}),
             Expires = DateTime.UtcNow.AddHours(2),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey),
                 SecurityAlgorithms.HmacSha256Signature)
         };
-        var token = tokenHandler.CreateToken(tokenDescriptor);
+        var token = tokenHandler.CreateJwtSecurityToken(tokenDescriptor);
         return tokenHandler.WriteToken(token);
     }
 
@@ -53,6 +55,13 @@ public class UserAuthService:IUserAuthService
             Email = email,
         };
         return userRepository.Add(user);
+    }
+
+    public string GetTokenUser(string token)
+    {
+        var tokenHandler = new JwtSecurityTokenHandler();
+        var jwt =tokenHandler.ReadJwtToken(token);
+        return jwt.Claims.First(c=> c.Type.Equals("nameid")).Value;
     }
 
     private string HashPassword(string password)
