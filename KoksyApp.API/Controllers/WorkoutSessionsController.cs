@@ -20,11 +20,13 @@ public class WorkoutSessionsController : BaseController
     }
 
     [HttpGet]
-    [Route("api/users/{userId}/Workout/{id}/Sessions")]
+    [Route("/api/Workout/{id}/Sessions")]
 
-    public Task<WorkoutSession> Get(string id, string userId)
+    public async Task<WorkoutSession[]> GetLastSessions(string id)
     {
-        return workoutSessionService.GetLastSession(id,userId);
+        var token =  await HttpContext.GetTokenAsync("access_token");
+        var userId = userAuthService.GetTokenUser(token);
+        return await workoutSessionService.GetLastSession(id,userId);
     }
     [HttpPost(Name = "AddWorkoutSession")]
 

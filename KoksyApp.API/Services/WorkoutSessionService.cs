@@ -7,15 +7,17 @@ namespace KoksyApp.API.Services;
 public interface IWorkoutSessionService
 {
     public Task<bool> AddWorkoutSession(WorkoutSessionForCreation session, string userId);
-    public Task<WorkoutSession> GetLastSession(string id, string userId);
+    public Task<WorkoutSession[]> GetLastSession(string id, string userId);
 }
 public class WorkoutSessionService :IWorkoutSessionService
 {
     private readonly IWorkoutSessionRepository sessionRepository;
+    private readonly IWorkoutService workoutService;
 
-    public WorkoutSessionService(IWorkoutSessionRepository sessionRepository)
+    public WorkoutSessionService(IWorkoutSessionRepository sessionRepository, IWorkoutService workoutService)
     {
         this.sessionRepository = sessionRepository;
+        this.workoutService = workoutService;
     }
 
     public async Task<bool> AddWorkoutSession(WorkoutSessionForCreation forCreation, string userId)
@@ -26,9 +28,15 @@ public class WorkoutSessionService :IWorkoutSessionService
         return true;
     }
 
-    public Task<WorkoutSession> GetLastSession(string id, string userId)
+    public async Task<WorkoutSession[]> GetLastSession(string id, string userId)
     {
-        return sessionRepository.GetLastSession(id, userId);
+        var workout = await workoutService.GetWorkout(id);
+        var sessions = Enumerable.Range(0, workout.SessionsCount)
+            .Select(setNumber => Task.Run((()=>sessionRepository.GetLastSessions(id, userId, setNumber))).GetAwaiter().GetResult())
+            .Where(x=> x != null)
+            .ToArray();
+        return sessions;
+
     }
 }
 //haslo Bhv5S6iRoTtcxzKs

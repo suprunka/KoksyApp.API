@@ -28,17 +28,17 @@ public class WorkoutSessionRepositoryLogs :IWorkoutSessionRepository
         }   
     }
 
-    public Task<WorkoutSession> GetLastSession(string id, string userId)
+    public Task<WorkoutSession?> GetLastSessions(string id, string userId, int setNumber)
     {
         try                                                                                 
         {                                                                                   
             logger.LogInformation("Getting data from database, last session for id:", id); 
-            return decorated.GetLastSession(id, userId);                                             
+            return decorated.GetLastSessions(id, userId,setNumber);                                             
         }                                                                                   
         catch (Exception e)                                                                 
         {                                                                                   
             logger.LogError(e, "Exception in adding data from database");
-            return null!;
+            return null;
         }   
     }
 }

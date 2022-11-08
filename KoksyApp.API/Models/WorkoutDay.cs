@@ -63,6 +63,10 @@ public class Workout
 }
 public class WorkoutSession
 {
+    public WorkoutSession()
+    {
+        
+    }
     public WorkoutSession(int reps, int setNumber, double weight, string workoutId, string userId)
     {
         Reps =reps;
