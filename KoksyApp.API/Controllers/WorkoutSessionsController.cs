@@ -13,7 +13,7 @@ public class WorkoutSessionsController : BaseController
     private readonly IUserAuthService userAuthService;
 
     public WorkoutSessionsController(IWorkoutSessionService workoutSessionService,
-        IUserAuthService userAuthService)
+        IUserAuthService userAuthService):base(userAuthService)
     {
         this.workoutSessionService = workoutSessionService;
         this.userAuthService = userAuthService;

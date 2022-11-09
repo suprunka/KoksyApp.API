@@ -11,7 +11,9 @@ public class UsersController: BaseController
     private readonly ILogger<UsersController> logger;
     private readonly IUserAuthService userAuthService;
 
-    public UsersController(ILogger<UsersController> logger,IUserAuthService userAuthService)
+    public UsersController(
+        ILogger<UsersController> logger,
+        IUserAuthService userAuthService): base(userAuthService)
     {
         this.logger = logger;
         this.userAuthService = userAuthService;

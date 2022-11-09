@@ -9,7 +9,9 @@ public class WorkoutsController : BaseController
 {
     private readonly IWorkoutService workoutService;
 
-    public WorkoutsController(IWorkoutService workoutService)
+    public WorkoutsController(
+        IWorkoutService workoutService,
+        IUserAuthService authService): base(authService)
     {
         this.workoutService = workoutService;
     }

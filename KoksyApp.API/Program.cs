@@ -31,6 +31,7 @@ builder.Services.Decorate<IWorkoutDayRepository, WorkoutDayRepositoryLogsDecorat
 builder.Services.Decorate<IWorkoutRepository,WorkoutRepositoryLogs>();
 builder.Services.Decorate<IWorkoutSessionRepository, WorkoutSessionRepositoryLogs>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserDayRepository, UserDayRepository>();
 builder.Services.AddScoped<IUserAuthService, UserAuthService>();
 builder.Services.AddCors(options =>
 {

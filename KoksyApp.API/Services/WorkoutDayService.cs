@@ -8,6 +8,7 @@ namespace KoksyApp.API.Services;
 public interface IWorkoutDayService
 {
     bool AddWorkoutDay(WorkoutDayForCreation forCreation);
+    bool AssignUser(string dayId, string userId);
     WorkoutDay[] GetWorkoutDays();
     Task<WorkoutDay> GetWorkoutDay(string id);
 }
@@ -15,10 +16,12 @@ public interface IWorkoutDayService
 public class WorkoutDayService:IWorkoutDayService
 {
     private readonly IWorkoutDayRepository workoutDayRepository;
+    private readonly IUserDayRepository userDayRepository;
 
-    public WorkoutDayService(IWorkoutDayRepository workoutDayRepository)
+    public WorkoutDayService(IWorkoutDayRepository workoutDayRepository, IUserDayRepository userDayRepository)
     {
         this.workoutDayRepository = workoutDayRepository;
+        this.userDayRepository = userDayRepository;
     }
 
     public bool AddWorkoutDay(WorkoutDayForCreation forCreation)
@@ -28,11 +31,18 @@ public class WorkoutDayService:IWorkoutDayService
         return true;
     }
 
+    public bool AssignUser(string dayId, string userId)
+    {
+        userDayRepository.Add(dayId, userId);
+        return true;
+    }
+
     public WorkoutDay[] GetWorkoutDays()
     {
         return workoutDayRepository.GetWorkoutDays();
     }
 
+    //TODO ADd maybe userId
     public Task<WorkoutDay> GetWorkoutDay(string id)
     {
         return workoutDayRepository.GetWorkoutDay(id);

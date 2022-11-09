@@ -109,6 +109,18 @@ public class User
     public string Password { get; set; }
     
 }
+public class UserDay
+{
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string DayId { get; set; }
+    
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string UserId { get; set; }
+    
+    public DateTime LastOpened { get; set; }
+}
 
 public class UserWorkoutSession
 {
