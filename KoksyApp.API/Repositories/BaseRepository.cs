@@ -15,7 +15,9 @@ public class BaseRepository<T>
 
     protected IMongoCollection<T> GetCollection()
     {
-        return db.GetCollection<T>(typeof(T).Name);
+        
+        var x=  db.GetCollection<T>(typeof(T).Name);
+        return x;
     }
     
 }

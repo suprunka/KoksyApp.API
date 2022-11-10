@@ -1,6 +1,7 @@
 ﻿using KoksyApp.API.Models;
 using KoksyApp.API.Services;
 using KoksyApp.Dtos.Models;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KoksyApp.API.Controllers;
@@ -17,15 +18,17 @@ public class WorkoutsController : BaseController
     }
 
     [HttpGet]
-    [Route("/api/workoutdays/{dayId}/workouts")]
-    public Workout[] GetWorkoutsForDay(string dayId)
+    [Microsoft.AspNetCore.Mvc.Route("/api/workoutdays/{dayId}/workouts")]
+    public Workout[] GetWorkoutsForDay(string dayId, [FromQuery]string? userId)
     {
-        var workouts = workoutService.GetWorkoutsForDay(dayId);
-        return workouts;
+        return workoutService.GetWorkoutsForDay(dayId,
+            string.IsNullOrEmpty(userId) ? UserId
+                : Maybe<string>.Of(userId)
+                );
     }
 
     [HttpGet]
-    [Route("{exerciseId}")]
+    [Microsoft.AspNetCore.Mvc.Route("{exerciseId}")]
     public async Task<Workout> GetWorkout(string exerciseId)
     {
         var workout = await workoutService.GetWorkout(exerciseId);

@@ -6,6 +6,7 @@ namespace KoksyApp.API.Models;
 
 public class WorkoutDay
 {
+    public WorkoutDay(){}
     public WorkoutDay(string name)
     {
         Name = name;
@@ -113,9 +114,10 @@ public class UserDay
 {
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
+    public string Id { get; set; }
+    [BsonRepresentation(BsonType.ObjectId)]
     public string DayId { get; set; }
     
-    [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
     public string UserId { get; set; }
     

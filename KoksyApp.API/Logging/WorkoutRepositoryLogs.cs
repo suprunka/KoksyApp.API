@@ -28,11 +28,24 @@ public class WorkoutRepositoryLogs :IWorkoutRepository
         }           
     }
 
+    public Workout[] GetWorkoutsForUserDay(string dayId, string userId)
+    {
+        try                                                                                 
+        {                                                                                   
+            logger.LogInformation("Getting data from database for day {@dayId}, user: {@userId}", dayId, userId); 
+            return decorated.GetWorkoutsForDay(dayId);                                             
+        }                                                                                   
+        catch (Exception e)                                                                 
+        {                                                                                   
+            logger.LogError(e, "Exception in adding data from database");
+            return Array.Empty<Workout>();
+        }       }
+
     public Task<Workout> GetWorkout(string id)
     {
         try                                                                                 
         {                                                                                   
-            logger.LogInformation($"Getting data from database for id= {id}"); 
+            logger.LogInformation($@"Getting data from database for id= {id}"); 
             return decorated.GetWorkout(id);                                             
         }                                                                                   
         catch (Exception e)                                                                 

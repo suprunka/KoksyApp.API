@@ -9,7 +9,7 @@ public interface IWorkoutDayService
 {
     bool AddWorkoutDay(WorkoutDayForCreation forCreation);
     bool AssignUser(string dayId, string userId);
-    WorkoutDay[] GetWorkoutDays();
+    WorkoutDay[] GetWorkoutDays(Maybe<string> userId);
     Task<WorkoutDay> GetWorkoutDay(string id);
 }
 
@@ -37,12 +37,21 @@ public class WorkoutDayService:IWorkoutDayService
         return true;
     }
 
-    public WorkoutDay[] GetWorkoutDays()
+    public WorkoutDay[] GetWorkoutDays(Maybe<string> userId)
     {
-        return workoutDayRepository.GetWorkoutDays();
+       return  userId.Map(id => userDayRepository.GetForUser(id).GetAwaiter().GetResult())
+            .Map(userDays=>workoutDayRepository.GetWorkoutDays()
+                .Where(d=> userDays.Any(ud=> ud.DayId == d.Id))
+                .Select(d=> new WorkoutDay
+                {
+                    Name = d.Name,
+                    Id = d.Id,
+                    LastOpened = userDays.FirstOrDefault(ud=> ud.DayId == d.Id).LastOpened
+                }))
+            .GetValueOrFallback(ArraySegment<WorkoutDay>.Empty)
+            .ToArray();
     }
 
-    //TODO ADd maybe userId
     public Task<WorkoutDay> GetWorkoutDay(string id)
     {
         return workoutDayRepository.GetWorkoutDay(id);

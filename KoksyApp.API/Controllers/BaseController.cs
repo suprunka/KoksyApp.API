@@ -1,4 +1,5 @@
-﻿using KoksyApp.API.Services;
+﻿using KoksyApp.API.Models;
+using KoksyApp.API.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,17 +10,15 @@ namespace KoksyApp.API.Controllers;
 public class BaseController :ControllerBase
 {
     private readonly IUserAuthService userAuthService;
-    private string userId;
-    protected string UserId => userId != string.Empty ? userId : GetUser();
+    protected Maybe<string> UserId =>  GetUser();
 
     public BaseController(IUserAuthService userAuthService)
     {
         this.userAuthService = userAuthService;
     }
-    private  string GetUser()
+    private Maybe<string> GetUser()
     {
-        var token =  HttpContext.GetTokenAsync("access_token").GetAwaiter().GetResult();
-        userId = userAuthService.GetTokenUser(token);
-        return UserId;
+        var token =  Maybe<string>.Of(HttpContext.GetTokenAsync("access_token").GetAwaiter().GetResult());
+        return token.Map(t => userAuthService.GetTokenUser(t));
     }
 }

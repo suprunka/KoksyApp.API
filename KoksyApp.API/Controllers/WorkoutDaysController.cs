@@ -23,13 +23,18 @@ public class WorkoutDaysController : BaseController
     [HttpGet(Name = "GetWorkoutDays")]
     public WorkoutDay[] Get()
     {
-        var days = dayService.GetWorkoutDays();
+        var days = dayService.GetWorkoutDays(UserId);
         return days;
     }
-    [HttpPost("{dayId}")]
-    public bool AssignToUser(string dayId)
+    [HttpPost("{dayId}/user/{userId}")]
+    public ActionResult AssignToUser(string dayId, string userId)
     {
-        return dayService.AssignUser(dayId, UserId);
+        if(string.IsNullOrEmpty(userId))
+            userId = UserId.GetValueOrFallback(String.Empty);
+        if (string.IsNullOrEmpty(userId))
+            return Unauthorized();
+        var isAssigned = dayService.AssignUser(dayId, userId);
+        return Ok(isAssigned);
     } 
     [HttpPost(Name = "PostWorkoutDays")]
     public bool Post(WorkoutDayForCreation forCreation)
