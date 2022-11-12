@@ -32,8 +32,20 @@ public class WorkoutDto
 
 public class UserForCreation
 {
+    public string Name { get; set; }  
+    [Required]
     [EmailAddress]
     public string Email { get; set; }  
     [MinLength(8)]
+    [Required]
+    public string Password { get; set; }  
+}
+public class UserForLogin
+{
+    [Required]
+    [EmailAddress]
+    public string Email { get; set; }  
+    [MinLength(8)]
+    [Required]
     public string Password { get; set; }  
 }

@@ -24,7 +24,7 @@ public class UsersController: BaseController
 
     [HttpPost]
     [Route("login")]
-    public ActionResult<string> Login(UserForCreation forCreation)
+    public ActionResult<string> Login(UserForLogin forCreation)
     {
         var result =  userAuthService.Authenticate(forCreation.Email, forCreation.Password);
         return Ok(result);
@@ -33,7 +33,7 @@ public class UsersController: BaseController
     [Route("register")]
     public async Task<bool> Register(UserForCreation forCreation)
     {
-        var result =  await userAuthService.Register(forCreation.Email, forCreation.Password);
+        var result =  await userAuthService.Register(forCreation.Email, forCreation.Password, "forCreation.Name");
         return result;
         
     }

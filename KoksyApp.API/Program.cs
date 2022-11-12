@@ -21,6 +21,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
+var x= Environment.GetEnvironmentVariables();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton( 
     new DatabaseSettings(Environment.GetEnvironmentVariable("DATABASE_URL"), Environment .GetEnvironmentVariable("DATABASE_NAME")));

@@ -15,7 +15,7 @@ namespace KoksyApp.API.Services;
 public interface IUserAuthService
 {
     public string Authenticate(string email, string password);
-    public Task<bool> Register(string email, string password);
+    public Task<bool> Register(string email, string password, string name);
 
     public string GetTokenUser(string token);
 }
@@ -47,7 +47,7 @@ public class UserAuthService:IUserAuthService
         return tokenHandler.WriteToken(token);
     }
 
-    public Task<bool> Register(string email, string password)
+    public Task<bool> Register(string email, string password, string name)
     {
         var existingUser = userRepository.Get().FirstOrDefault(u=> u.Email == email);
         if (existingUser != null)
@@ -56,6 +56,7 @@ public class UserAuthService:IUserAuthService
         {
             Password = HashPassword(password),
             Email = email,
+            Name= name
         };
         return userRepository.Add(user);
     }
