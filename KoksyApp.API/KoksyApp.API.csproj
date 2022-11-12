@@ -3,6 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
+        <InvariantGlobalization>true</InvariantGlobalization>
         <ImplicitUsings>enable</ImplicitUsings>
         <UserSecretsId>dfe47086-4c04-4af8-8779-114b84c9bf4a</UserSecretsId>
     </PropertyGroup>
