@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace KoksyApp.Dtos.Models;
+namespace KoksyApp.API.Models.DTO;
 
 public class WorkoutForCreation
 {

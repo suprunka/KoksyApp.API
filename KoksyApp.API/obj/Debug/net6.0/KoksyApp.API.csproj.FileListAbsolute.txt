@@ -41,8 +41,6 @@ C:\Users\PatrycjaMariaSuprun\MyProjects\KoksyApp.API\KoksyApp.API\obj\Debug\net6
 C:\Users\PatrycjaMariaSuprun\MyProjects\KoksyApp.API\KoksyApp.API\obj\Debug\net6.0\KoksyApp.API.pdb
 C:\Users\PatrycjaMariaSuprun\MyProjects\KoksyApp.API\KoksyApp.API\obj\Debug\net6.0\KoksyApp.API.genruntimeconfig.cache
 C:\Users\PatrycjaMariaSuprun\MyProjects\KoksyApp.API\KoksyApp.API\obj\Debug\net6.0\ref\KoksyApp.API.dll
-C:\Users\PatrycjaMariaSuprun\MyProjects\KoksyApp.API\KoksyApp.API\bin\Debug\net6.0\KoksyApp.Dtos.dll
-C:\Users\PatrycjaMariaSuprun\MyProjects\KoksyApp.API\KoksyApp.API\bin\Debug\net6.0\KoksyApp.Dtos.pdb
 C:\Users\PatrycjaMariaSuprun\MyProjects\KoksyApp.API\KoksyApp.API\bin\Debug\net6.0\log4net.config
 C:\Users\PatrycjaMariaSuprun\MyProjects\KoksyApp.API\KoksyApp.API\bin\Debug\net6.0\log4net.dll
 C:\Users\PatrycjaMariaSuprun\MyProjects\KoksyApp.API\KoksyApp.API\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll

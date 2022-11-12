@@ -2,8 +2,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoksyApp.API", "KoksyApp.API\KoksyApp.API.csproj", "{6DE4D72E-AA46-4D38-9C23-E10B19A0031B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoksyApp.Dtos", "KoksyApp.Dtos\KoksyApp.Dtos.csproj", "{53A1BC4B-5EC0-44AA-8C98-901FD4F44EAE}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,9 +12,5 @@ Global
 		{6DE4D72E-AA46-4D38-9C23-E10B19A0031B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DE4D72E-AA46-4D38-9C23-E10B19A0031B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DE4D72E-AA46-4D38-9C23-E10B19A0031B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{53A1BC4B-5EC0-44AA-8C98-901FD4F44EAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{53A1BC4B-5EC0-44AA-8C98-901FD4F44EAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{53A1BC4B-5EC0-44AA-8C98-901FD4F44EAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{53A1BC4B-5EC0-44AA-8C98-901FD4F44EAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

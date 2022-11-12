@@ -1,4 +1,5 @@
 ﻿using KoksyApp.API.Models;
+using KoksyApp.API.Models.DTO;
 using KoksyApp.API.Repositories;
 using KoksyApp.Dtos.Models;
 using MongoDB.Bson;

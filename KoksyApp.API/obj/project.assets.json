@@ -1181,19 +1181,6 @@
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
         }
-      },
-      "KoksyApp.Dtos/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "Microsoft.Extensions.Logging.Log4Net.AspNetCore": "6.1.0"
-        },
-        "compile": {
-          "bin/placeholder/KoksyApp.Dtos.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/KoksyApp.Dtos.dll": {}
-        }
       }
     }
   },
@@ -2780,16 +2767,10 @@
         "system.text.json.nuspec",
         "useSharedDesignerContext.txt"
       ]
-    },
-    "KoksyApp.Dtos/1.0.0": {
-      "type": "project",
-      "path": "../KoksyApp.Dtos/KoksyApp.Dtos.csproj",
-      "msbuildProject": "../KoksyApp.Dtos/KoksyApp.Dtos.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "KoksyApp.Dtos >= 1.0.0",
       "Microsoft.AspNetCore.Authentication >= 2.2.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 6.0.6",
       "Microsoft.Extensions.Logging.Log4Net.AspNetCore >= 6.1.0",
@@ -2841,11 +2822,7 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {
-            "C:\\Users\\PatrycjaMariaSuprun\\MyProjects\\KoksyApp.API\\KoksyApp.Dtos\\KoksyApp.Dtos.csproj": {
-              "projectPath": "C:\\Users\\PatrycjaMariaSuprun\\MyProjects\\KoksyApp.API\\KoksyApp.Dtos\\KoksyApp.Dtos.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
