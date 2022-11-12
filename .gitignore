@@ -1,1 +1,5 @@
 KoksyApp.API/Properties/launchSettings.json
+KoksyApp.API/bin/*
+KoksyApp.API/obj/*
+KoksyApp.API/KoksyApp.API/bin/*
+KoksyApp.API/KoksyApp.API/obj/*
