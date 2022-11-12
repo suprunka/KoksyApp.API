@@ -22,3 +22,4 @@ public class BaseController :ControllerBase
         return token.Map(t => userAuthService.GetTokenUser(t));
     }
 }
+
