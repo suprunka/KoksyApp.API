@@ -1,4 +1,5 @@
-﻿using KoksyApp.API.Settings;
+﻿using System;
+using KoksyApp.API.Settings;
 using MongoDB.Driver;
 
 namespace KoksyApp.API.Repositories;

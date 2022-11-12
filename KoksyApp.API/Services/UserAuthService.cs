@@ -1,6 +1,9 @@
-﻿using System.IdentityModel.Tokens.Jwt;
+﻿using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
+using System.Threading.Tasks;
 using KoksyApp.API.Exceptions;
 using KoksyApp.API.Models;
 using KoksyApp.API.Repositories;

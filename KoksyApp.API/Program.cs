@@ -1,3 +1,4 @@
+using System;
 using System.Text;
 using KoksyApp.API.Logging;
 using KoksyApp.API.Models;
@@ -5,6 +6,9 @@ using KoksyApp.API.Repositories;
 using KoksyApp.API.Services;
 using KoksyApp.API.Settings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 

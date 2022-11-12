@@ -1,4 +1,6 @@
-﻿using KoksyApp.Dtos.Models;
+﻿using System;
+using System.Collections.Generic;
+using KoksyApp.Dtos.Models;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 

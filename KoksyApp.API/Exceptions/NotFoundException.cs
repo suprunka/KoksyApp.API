@@ -1,4 +1,6 @@
-﻿namespace KoksyApp.API.Exceptions;
+﻿using System;
+
+namespace KoksyApp.API.Exceptions;
 
 public class NotFoundException :Exception
 {

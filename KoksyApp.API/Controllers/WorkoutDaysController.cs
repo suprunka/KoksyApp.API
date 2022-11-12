@@ -1,3 +1,4 @@
+using System;
 using KoksyApp.API.Models;
 using KoksyApp.API.Models.DTO;
 using KoksyApp.API.Services;
@@ -5,6 +6,7 @@ using KoksyApp.Dtos.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Metadata;
 using Microsoft.AspNetCore.SignalR;
+using Microsoft.Extensions.Logging;
 
 namespace KoksyApp.API.Controllers;
 

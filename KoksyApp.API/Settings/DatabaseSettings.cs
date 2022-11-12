@@ -1,4 +1,6 @@
-﻿namespace KoksyApp.API.Settings;
+﻿using System;
+
+namespace KoksyApp.API.Settings;
 
 public class DatabaseSettings
 {
