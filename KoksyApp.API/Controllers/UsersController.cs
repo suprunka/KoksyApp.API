@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KoksyApp.API.Controllers;
 
+[Route("api/users")]
 public class UsersController:ControllerBase
 {
     private readonly ILogger<UsersController> logger;
