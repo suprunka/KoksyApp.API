@@ -1,11 +1,13 @@
 ﻿using KoksyApp.API.Models;
 using KoksyApp.API.Services;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KoksyApp.API.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("api/[controller]")]
 public class BaseController :ControllerBase
 {

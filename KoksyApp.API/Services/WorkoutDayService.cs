@@ -30,7 +30,7 @@ public class WorkoutDayService:IWorkoutDayService
 
     public bool AddWorkoutDay(WorkoutDayForCreation forCreation)
     {
-        var workoutDay = new WorkoutDay(forCreation.Name);
+        var workoutDay = new WorkoutDay(forCreation.Name, forCreation.Type);
         workoutDayRepository.Add(workoutDay);
         return true;
     }

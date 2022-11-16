@@ -9,12 +9,15 @@ namespace KoksyApp.API.Models;
 public class WorkoutDay
 {
     public WorkoutDay(){}
-    public WorkoutDay(string name)
+    public WorkoutDay(string name, string type)
     {
         Name = name;
+        Type = type;
         LastOpened = DateTime.UtcNow;
     }
     public string Name { get; set; }
+    public string Type { get; }
+
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
     public string Id { get; set; }
