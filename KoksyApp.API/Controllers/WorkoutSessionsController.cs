@@ -31,7 +31,7 @@ public class WorkoutSessionsController : BaseController
     }
     [HttpPost(Name = "AddWorkoutSession")]
 
-    public async Task<bool> Add(WorkoutSessionForCreation session)
+    public async Task<bool> Add([FromBody]WorkoutSessionForCreation session)
     {
         var token =  await HttpContext.GetTokenAsync("access_token");
         var userId = userAuthService.GetTokenUser(token);

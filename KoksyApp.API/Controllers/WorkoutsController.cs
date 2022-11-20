@@ -38,7 +38,7 @@ public class WorkoutsController : BaseController
     }
 
     [HttpPost(Name = "Add")]
-    public async Task<bool> Add(WorkoutForCreation forCreation)
+    public async Task<bool> Add([FromBody]WorkoutForCreation forCreation)
     {
         var added = await workoutService.AddWorkout(forCreation);
         return added;
